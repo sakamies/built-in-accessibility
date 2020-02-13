@@ -4,7 +4,9 @@ Some discussion on what you get for free by using native html elements. All thes
 
 I've focused mainly on elements that directly affect user interaction. Many points concern only screen readers on the surface, but using native elements ensures that pages are better machine readable too. There may be a lot of different ways these elements are meaningful, like for SEO or performance, but I'm focusing on user interactions and accessibility here.
 
-This article is not made to discourage you making custom implementations. It is is more a list of considerations that you might want to keep in mind and to help show what you can get from native elements. Some of these features you might want to enhance or replace in your own custom implementations.
+The focus is also more on the current state of affairs in browsers, not the ideal situation according to specs.
+
+This article is not made to discourage you making custom implementations. It is is more a list of considerations that you might want to keep in mind and to help show what you can get from native elements. Some of these features you might even want to enhance or replace in your own custom implementations.
 
 I don't know all of this by heart and research takes time. Please send in suggestions. What do you think is missing?
 
@@ -16,7 +18,7 @@ I don't know all of this by heart and research takes time. Please send in sugges
 
 ## General
 
-- If styling fails for whatever reason, native elements have some base styles provided by the browser, so well made markup will usually still produce an understandable web page even without any styles.
+- If styling fails for whatever reason, native elements have some base styles provided by the browser, so well made markup will usually still produce an understandable web page for users even without any styles.
 - If scripts fail for whatever reason, links and regular forms will still work without any scripts.
 
 ## Main root
@@ -30,6 +32,8 @@ This section is not necessarily related to the html element itself, but to how a
 - In some browsers, the text you have input to input elements gets preserved when you go back. (verify this)
 
 If you have a JavaScript front end app, you should take these into account when displaying new pages. In some cases it may not be needed to have these behaviours and in some cases you might have better state preservation with a front end app.
+
+A normal web page has many consistent default behaviours, like scrolling one viewport length with the spacebar in desktop browsers. When implementing custom actions (keyboard shorcuts, gestures) test your site with your target browsers and platforms with and without your custom implementation so that if you overwrite any default behaviours, it's intentional.
 
 ## Document metadata
 
@@ -85,7 +89,7 @@ Announced as a separator by screen readers.
 
 ### `<a>`
 
-- Focusable [1]
+- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
 - Destination url is usually shown by browsers in some kind of preview
 - Gets announced as a link by screen readers
 - You can open links to a new window or tab. (most browsers)
@@ -127,7 +131,7 @@ Tables have helpful navigation modes and announcements in assistive software.
 
 ### `<button>`
 
-- Focusable [1]
+- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
 - Gets announced as a button by screen readers
 - Click event gets triggered when the user interacts with the element, even if via keyboard or screen reader. Pointing device doesn't matter.
 
@@ -137,7 +141,7 @@ Groups fields together both visually and for screen readers.
 
 ### `<input>, <select>, <textarea>`
 
-- Focusable [1]
+- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
 - Screen reader users can get a list of all form elements
 - Type attribute can give you additional features, like a specific keyboard or a different way to select input content.
 
@@ -150,16 +154,7 @@ Groups fields together both visually and for screen readers.
 
 ## Interactive elements
 
-### `<details>`
+### `<details>`, `<summary>`
 
-### `<summary>`
+You can use the details, summary element pair to make and expander without any styling of javascript.
 
-
----------
-
-
-
-## Why it matters
-
-1. Anyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
-2. Visually impaired users can get a better understanding of content with good alt attributes.
