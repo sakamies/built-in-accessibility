@@ -25,7 +25,13 @@ I don't know all of this by heart and research takes time. Please send in sugges
 
 ### `<html>`
 
-This section is not necessarily related to the html element itself, but to how a browser handles whole web pages.
+You can set the page language with the `lang` attribute. This will let browsers, search engines and screen readers know what language a page is to be in without any detective work on their part.
+
+You can use the lang attribute on any element, if your page includes content in many languages.
+
+[Using the HTML lang attribute](https://developer.paciellogroup.com/blog/2016/06/using-the-html-lang-attribute/)
+
+Some more notes that are not necessarily related to the html element itself, but to how a browser handles whole web pages.
 
 - When you navigate to a page, focus gets set to the beginning of the page
 - When you go back, scroll position gets set back to where it was.
@@ -63,7 +69,7 @@ Gets announced by screen readers when you navigate to a new page. If you change 
 
 ## Content sectioning
 
-### `<header>`, `<main>`, `<section>`, `<nav>`, `<article>`, `<aside>`
+### `<header>`, `<main>`, `<section>`, `<nav>`, `<article>`, `<aside>`, `<footer>`
 
 Screen readers support varies, but they include supported elements when navigating by landmark. This makes sense because the header, footer, nav, article, section and aside elements all Map to ARIA landmarks. These elemnents have an implicit role, so when navigating to them, screen readers announce them for what they are.
 
@@ -89,11 +95,19 @@ Announced as a separator by screen readers.
 
 ### `<a>`
 
-- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
+- Focusable, so anyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
 - Destination url is usually shown by browsers in some kind of preview
-- Gets announced as a link by screen readers
 - You can open links to a new window or tab. (most browsers)
 - You can see the url you're about to go to. (most desktop browsers)
+- You can copy and share the url of a link
+- Gets announced as a link by screen readers
+- Screen reader users can get a list of links on the page an navigate by that
+- Screen readers also announce if the link will open in a new window, desktop users usually get a hint about that too
+- Search engines understand links, they don't understand plain clickable divs
+- You can use the target attribute to get browsers to open links in new tabs
+- Users can open links in new tabs with the mouse, finger, keyboard or screen reader
+
+If you do anything custom with links, there's a lot to test on different platforms, so if you do something custom, be sure to at least be intentional if you override default functionality.
 
 ### `<sub>`, `<sup>`
 
@@ -131,7 +145,7 @@ Tables have helpful navigation modes and announcements in assistive software.
 
 ### `<button>`
 
-- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
+- Focusable, so anyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
 - Gets announced as a button by screen readers
 - Click event gets triggered when the user interacts with the element, even if via keyboard or screen reader. Pointing device doesn't matter.
 
@@ -139,18 +153,16 @@ Tables have helpful navigation modes and announcements in assistive software.
 
 Groups fields together both visually and for screen readers.
 
-### `<input>, <select>, <textarea>`
-
-- Focusable, so a nyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
-- Screen reader users can get a list of all form elements
-- Type attribute can give you additional features, like a specific keyboard or a different way to select input content.
-
-### `<label>`
+### `<label>`, `<input>, <select>, <textarea>`
 
 - When you associate a label with an input (input, select, textarea) element, the label gets announced by screen readers.
-- Increased click area. When you click on the label, focus moves to the associated input element.
+- With labels you get increased click area. When you click on the label, focus moves to the associated input element.
+- Focusable, so anyone using a screen reader, keyboard or anything else without a pointer (like a mouse or a finger) can understand where on the page they are at.
+- Screen reader users can get a list of all form elements
+- Type attribute can give you additional features, like a specific keyboard or a different way to select input content.
+- Standard controls accross platforms, include a large number of conventions that you should follow and be careful not to override when doing custom impelementation
+  - Text editing, selections, copy & paste etc etc.
 
-### `<progress>`
 
 ## Interactive elements
 
