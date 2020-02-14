@@ -1,4 +1,4 @@
-# Built in features of html elements in browsers
+# Built in user facing features of html elements in browsers
 
 Some discussion on what you get for free by using native html elements. All these behaviours may not be common or even always necessary and implementations vary between browsers and platforms. This is mostly good base knowledge to know before doing anything custom.
 
